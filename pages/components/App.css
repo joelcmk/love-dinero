@@ -1,0 +1,65 @@
+.expenses_list {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.expenses_list button {
+  background: #29c0aa;
+  border: none;
+  padding: 20px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  --shadow-color: 0deg 0% 60%;
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+}
+
+.expenses_list_card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+  max-width: 300px;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.expenses_list_card h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.expenses_list_table tr:nth-child(even) {
+  background-color: #e0ffff;
+}
+
+.expenses_list_table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.expenses_list_table button {
+  margin-left: 10px;
+  background: #29c0aa;
+  border: none;
+  padding: 0 20px;
+  border-radius: 5px;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+  padding: 100px;
+}
+
+.mdl-button--raised.mdl-button--colored {
+  background: cyan;
+}
