@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import 'firebaseui/dist/firebaseui.css';
 import 'firebase/compat/auth';
 //import './Login.css';
@@ -15,11 +14,6 @@ const Login = function () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongEmail, setWrongEmail] = useState(false);
-
-  const auth = getAuth();
-
-  const navigate = useNavigate();
-  const provider = new GoogleAuthProvider();
 
   const emailSubmit = (e) => {
     e.preventDefault();
