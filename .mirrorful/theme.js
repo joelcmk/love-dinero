@@ -61,6 +61,7 @@ export const Tokens = {
     text: {
       base: '#ffffff',
       white: '#ffffff',
+      green: '#028d78',
     },
   },
   fontSizes: {

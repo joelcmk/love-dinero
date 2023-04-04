@@ -1,4 +1,4 @@
-/*@import '../../../.mirrorful/theme.css';*/
+/* @import url('../../../.mirrorful/test.css'); */
 
 .nav {
   background-color: #29c0a9;
@@ -15,5 +15,5 @@
 
 .logo {
   margin-left: 20px;
-  color: var(--color-hibiscus);
+  color: var(--color-text-white);
 }

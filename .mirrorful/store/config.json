@@ -97,7 +97,8 @@
 				"name": "Text",
 				"baseColor": "#ffffff",
 				"variants": {
-					"white": "#ffffff"
+					"white": "#ffffff",
+					"green": "#028d78"
 				}
 			}
 		],

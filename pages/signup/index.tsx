@@ -1,11 +1,10 @@
+import Nav from '../../Components/Nav/Nav';
+import { Tokens } from '../../.mirrorful/theme';
+import Button from '../../Components/Button/Button';
 import { useState } from 'react';
-import 'firebaseui/dist/firebaseui.css';
-import 'firebase/compat/auth';
-import styles from './Login.module.css';
-import { Tokens } from '../../../.mirrorful/theme';
-import Button from '../Button/Button';
+import styles from './Signup.module.css';
 
-const Login = function () {
+const Signup = function () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongEmail, setWrongEmail] = useState(false);
@@ -20,9 +19,9 @@ const Login = function () {
         </div>
 
         <div className="emailLogin">
-          <p>Welcome back,</p>
+          <p>Hey there,</p>
           <h2 style={{ marginLeft: '5px', marginBottom: '10px' }}>
-            Login to your account
+            Create a free account
           </h2>
           <div style={{ maxWidth: '256.5px', color: 'red' }}>
             {wrongEmail ? (
@@ -51,19 +50,16 @@ const Login = function () {
             />
 
             <Button style={{ backgroundColor: Tokens.colors.button.base }}>
-              Submit
-            </Button>
-            <Button style={{ backgroundColor: Tokens.colors.button.Google }}>
-              Or sign-in with Google
-            </Button>
-            <Button style={{ backgroundColor: Tokens.colors.button.Demo }}>
-              Or try a demo
+              Create
             </Button>
           </form>
         </div>
+        <p>
+          Already have an account? <a href="/login">Log in here</a>
+        </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
