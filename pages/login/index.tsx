@@ -50,7 +50,12 @@ const Login = function () {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button style={{ backgroundColor: Tokens.colors.button.base }}>
+            <Button
+              style={{
+                backgroundColor: Tokens.colors.button.base,
+                marginTop: '2rem',
+              }}
+            >
               Submit
             </Button>
             <Button style={{ backgroundColor: Tokens.colors.button.Google }}>
@@ -63,7 +68,10 @@ const Login = function () {
         </div>
         <p>
           Don&apos;t have an account?{' '}
-          <a style={{ color: Tokens.colors.text.green }} href="/signup">
+          <a
+            style={{ color: Tokens.colors.text.green, fontWeight: 'bold' }}
+            href="/signup"
+          >
             Join free today
           </a>
         </p>

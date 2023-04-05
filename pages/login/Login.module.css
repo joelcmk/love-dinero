@@ -28,11 +28,15 @@
 }
 
 .input {
-  width: 241px;
+  width: 246.5px;
   height: 40px;
   border-color: gray;
-  border-style: solid;
-  border-width: 0.75px;
+  border-style: none;
   border-radius: 3px;
   margin: 5px;
+  padding-left: 10px;
+}
+
+.input::placeholder {
+  color: var(--color-light-green);
 }
