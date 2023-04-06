@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import chroma from 'chroma-js';
-//import './NewExpense.css';
+import styles from './NewExpense.module.css';
 import CreatableSelect from 'react-select/creatable';
-
+import Button from '../Button/Button';
+import { Tokens } from '../../.mirrorful/theme';
 import { getDatabase, ref, set } from 'firebase/database';
 
 function NewExpense(props) {
@@ -15,19 +16,6 @@ function NewExpense(props) {
 
   const handleCategory = (e) => {
     setCategory(e.value);
-  };
-
-  const submitCategory = (e) => {
-    e.preventDefault();
-    const db = getDatabase();
-    var integer = parseInt(expense, 10);
-    set(ref(db, 'users/' + props.userId + `/${props.length}`), {
-      id: props.length,
-      category: category,
-      expense: integer,
-    });
-    setCategory('');
-    setExpense('');
   };
 
   const options = [
@@ -93,29 +81,36 @@ function NewExpense(props) {
   };
 
   return (
-    <div className="NewExpense">
+    <div className={styles.newExpense}>
       <h2>Add a new expense</h2>
       <span>Select a category</span>
       <CreatableSelect
-        className="category-list"
+        className={styles.categoryList}
         styles={colourStyles}
         options={options}
         onChange={handleCategory}
       />
-      <form className="input" onSubmit={submitCategory}>
-        <div className="amount">
+      <form className={styles.input}>
+        <div className={styles.amount}>
           <span>Add amount</span>
           <input
             type="number"
             placeholder="$"
             name="expense"
-            id="expense"
+            className={styles.expense}
             value={expense}
             onChange={handleChange}
           />
         </div>
 
-        <button type="submit">Submit</button>
+        <Button
+          style={{
+            backgroundColor: Tokens.colors.button['light red'],
+            width: '250px',
+          }}
+        >
+          Submit
+        </Button>
       </form>
     </div>
   );

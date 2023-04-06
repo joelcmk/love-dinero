@@ -1,11 +1,14 @@
 import Nav from '@/Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import Budget from '../../Components/Budget/Budget';
+import NewExpense from '@/Components/NewExpense/NewExpense';
+
 function Dashboard() {
   return (
-    <div>
+    <div style={{ backgroundColor: 'white' }}>
       <Nav />
       <Budget />
+      <NewExpense />
       <Footer />
     </div>
   );

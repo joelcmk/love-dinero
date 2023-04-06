@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Button from '../Button/Button';
 import styles from './Budget.module.css';
+import { Tokens } from '../../.mirrorful/theme';
 
 function Budget() {
   const [target, setTarget] = useState(true);
@@ -55,9 +57,14 @@ function Budget() {
               <td></td>
               <td></td>
               <td>
-                <button className={styles.update_button}>
-                  {!updateTarget ? 'update' : 'done'}
-                </button>
+                <Button
+                  style={{
+                    backgroundColor: Tokens.colors.button['light red'],
+                    width: '100px',
+                  }}
+                >
+                  {!updateTarget ? 'Update' : 'Done'}
+                </Button>
               </td>
             </tr>
           </tbody>

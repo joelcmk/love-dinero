@@ -1,9 +1,8 @@
-.Button {
+.button {
   margin: 0 auto;
   border-style: solid;
   border-radius: 3px;
   margin: 5px;
-  width: 246.5px;
   height: 40px;
   color: white;
   cursor: pointer;

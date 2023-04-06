@@ -2837,10 +2837,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@mirrorful/core@1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@mirrorful/core/-/core-1.0.9.tgz#8fec9d35612fc74e8cf4c66b67fa87e57c675f22"
-  integrity sha512-L9cY3BEU0+IojOQ7W1+NLdUdvFrQkGDItT1Dc0bXUFWxzoIgtM8kXcGQ3CfgA3ydHMkOFqAWT+i8ZOdGVQIxpw==
+"@mirrorful/core@1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@mirrorful/core/-/core-1.0.10.tgz#bda4e80676ff5f9a39f85af6eafb9586dcc7ef84"
+  integrity sha512-kaT7OliLoAPLjplrRU4AlOIUFaaJ7POuX9LaUppF1s0aGeVWt1R7x6Rf8vFEciBsH9zx3007+aWiusOGVEDaGA==
   dependencies:
     "@chakra-ui/icons" "^2.0.17"
     "@chakra-ui/react" "^2.5.2"
@@ -11497,16 +11497,16 @@ minizlib@^2.1.1:
     minipass "^3.0.0"
     yallist "^4.0.0"
 
-mirrorful@^5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/mirrorful/-/mirrorful-5.0.6.tgz#60ec85888b7781834d2340c6513e34e0098b6ebf"
-  integrity sha512-eE9AUv3yTiEORrnsKB2LvtvUOEpI7FZLhMH2LS7Ckhfys8ABYcejLM/mBU9s4fpbwBdP0DABJagj+E3PVkK38A==
+mirrorful@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/mirrorful/-/mirrorful-5.0.7.tgz#fc875a56f3d7aa8869acc76ef77412ab4bc25cd4"
+  integrity sha512-j60dhFC4wrBw/YN0dob/Y2cIypUuNf4TTOnnorcZAI2VOoOgZOxL3VmX3yDJStWZOOas0k2+DgBNksvLPErMgw==
   dependencies:
     "@chakra-ui/icons" "^2.0.17"
     "@chakra-ui/react" "^2.5.1"
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
-    "@mirrorful/core" "1.0.9"
+    "@mirrorful/core" "1.0.10"
     chalk "^2.4.2"
     commander "^2.20.0"
     conf "^10.0.2"

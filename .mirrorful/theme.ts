@@ -57,6 +57,7 @@ export const Tokens = {
       base: '#29c0a9',
       Google: '#f84a4a',
       Demo: '#a9a6a6',
+      'light red': '#ee7874',
     },
     text: {
       base: '#ffffff',
