@@ -1,0 +1,15 @@
+.wrapper {
+  height: 40px;
+  border-radius: 3px;
+  padding-left: 10px;
+  border: 1px solid #e0e0e0;
+  margin: 5px;
+}
+
+.login {
+  border: 0;
+}
+
+.login::placeholder {
+  color: var(--color-light-green);
+}

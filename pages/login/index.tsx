@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 
 import styles from './Login.module.css';
 import { Tokens } from '../../.mirrorful/theme';
+
 import Button from '../../Components/Button/Button';
+import Input from '../../Components/Input/input';
 
 const Login = function () {
   const [email, setEmail] = useState('');
@@ -39,18 +41,20 @@ const Login = function () {
               ''
             )}
           </div>
-
           <form style={{ display: 'flex', flexDirection: 'column' }}>
             <p>Email</p>
-            <input
-              className={styles.input}
+
+            <Input
               placeholder="you@email.com"
+              variant="login"
               value={email}
               type="email"
               onChange={(e) => setEmail(e.target.value)}
             />
             <p>Password</p>
-            <input
+
+            <Input
+              variant="login"
               className={styles.input}
               placeholder="password"
               value={password}

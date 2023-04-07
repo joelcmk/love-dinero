@@ -27,16 +27,6 @@
   margin-bottom: 15px;
 }
 
-.input {
-  width: 246.5px;
-  height: 40px;
-  border-color: gray;
-  border-style: none;
-  border-radius: 3px;
-  margin: 5px;
-  padding-left: 10px;
-}
-
 .input::placeholder {
   color: var(--color-light-green);
 }
