@@ -103,14 +103,7 @@ function NewExpense(props) {
           />
         </div>
 
-        <Button
-          style={{
-            backgroundColor: Tokens.colors.button['light red'],
-            width: '250px',
-          }}
-        >
-          Submit
-        </Button>
+        <Button style={{ width: '250px' }}>Submit</Button>
       </form>
     </div>
   );

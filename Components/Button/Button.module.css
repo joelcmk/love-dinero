@@ -1,4 +1,4 @@
-.button {
+.wrapper {
   margin: 0 auto;
   border-style: solid;
   border-radius: 3px;
@@ -7,4 +7,35 @@
   color: white;
   cursor: pointer;
   border: 0;
+  background-color: var(--color-light-green);
+}
+
+.wrapper:hover {
+  background-color: var(--color-light-green-200);
+}
+
+.google {
+  background-color: var(--color-button-google);
+}
+
+.google:hover {
+  background-color: var(--color-button-light-red);
+}
+
+.demo {
+  background-color: var(--color-button-demo);
+}
+
+.demo:hover {
+  background-color: var(--color-button-demo-hover);
+}
+
+.update {
+  background-color: var(--color-button-light-red);
+  padding: 0 1em;
+  border-radius: 20px;
+}
+
+.update:hover {
+  background-color: var(--color-button-update-hover);
 }

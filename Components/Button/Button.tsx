@@ -1,10 +1,9 @@
 import styles from './Button.module.css';
-function Button({ children, style, onClick }) {
+function Button({ children, variant, onClick, style }) {
   return (
     <button
-      id={styles.test}
       onClick={onClick}
-      className={styles.button}
+      className={`${styles.wrapper} ${styles[variant]}`}
       style={style}
     >
       {children}

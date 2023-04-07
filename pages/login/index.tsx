@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import styles from './Login.module.css';
 import { Tokens } from '../../.mirrorful/theme';
@@ -9,6 +10,13 @@ const Login = function () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongEmail, setWrongEmail] = useState(false);
+
+  const router = useRouter();
+
+  function handleDemoLogin(event) {
+    event.preventDefault();
+    router.push('/dashboard');
+  }
 
   return (
     <div style={{ width: '100%', height: '100vh', display: 'flex' }}>
@@ -50,18 +58,14 @@ const Login = function () {
               onChange={(e) => setPassword(e.target.value)}
             />
 
+            <Button>Submit</Button>
+            <Button variant="google">Or sign-in with Google</Button>
             <Button
-              style={{
-                backgroundColor: Tokens.colors.button.base,
-                marginTop: '2rem',
+              onClick={(event) => {
+                handleDemoLogin(event);
               }}
+              variant="demo"
             >
-              Submit
-            </Button>
-            <Button style={{ backgroundColor: Tokens.colors.button.Google }}>
-              Or sign-in with Google
-            </Button>
-            <Button style={{ backgroundColor: Tokens.colors.button.Demo }}>
               Or try a demo
             </Button>
           </form>

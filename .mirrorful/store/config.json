@@ -1,5 +1,24 @@
 {
 	"tokens": {
+		"typography": {
+			"fontSizes": [
+				{
+					"value": 1,
+					"unit": "rem",
+					"name": "sm"
+				},
+				{
+					"value": 1.2,
+					"unit": "rem",
+					"name": "md"
+				},
+				{
+					"value": 1.4,
+					"unit": "rem",
+					"name": "lg"
+				}
+			]
+		},
 		"colorData": [
 			{
 				"name": "Light Green",
@@ -72,7 +91,9 @@
 					"500": "#29c0a9",
 					"Google": "#f84a4a",
 					"Demo": "#a9a6a6",
-					"light red": "#ee7874"
+					"light red": "#ee7874",
+					"Demo-hover": "#cecbcb",
+					"update hover": "#fca09d"
 				}
 			},
 			{
@@ -84,25 +105,6 @@
 				}
 			}
 		],
-		"typography": {
-			"fontSizes": [
-				{
-					"value": 1,
-					"unit": "rem",
-					"name": "sm"
-				},
-				{
-					"value": 1.2,
-					"unit": "rem",
-					"name": "md"
-				},
-				{
-					"value": 1.4,
-					"unit": "rem",
-					"name": "lg"
-				}
-			]
-		},
 		"shadows": [
 			{
 				"name": "sm",

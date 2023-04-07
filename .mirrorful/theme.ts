@@ -58,6 +58,8 @@ export const Tokens = {
       Google: '#f84a4a',
       Demo: '#a9a6a6',
       'light red': '#ee7874',
+      'Demo-hover': '#cecbcb',
+      'update hover': '#fca09d',
     },
     text: {
       base: '#ffffff',

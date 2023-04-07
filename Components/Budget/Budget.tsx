@@ -57,12 +57,7 @@ function Budget() {
               <td></td>
               <td></td>
               <td>
-                <Button
-                  style={{
-                    backgroundColor: Tokens.colors.button['light red'],
-                    width: '100px',
-                  }}
-                >
+                <Button variant="update">
                   {!updateTarget ? 'Update' : 'Done'}
                 </Button>
               </td>
