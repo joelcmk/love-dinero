@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -10,7 +10,11 @@ import Input from '../../Components/Input/input';
 
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react';
 
 const Login = function () {
   const [email, setEmail] = useState('');
@@ -21,6 +25,16 @@ const Login = function () {
   const supabase = useSupabaseClient();
 
   const router = useRouter();
+
+  const user = useUser();
+
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    } else {
+      router.push('/login');
+    }
+  }, [user]);
 
   function handleDemoLogin(event) {
     event.preventDefault();
