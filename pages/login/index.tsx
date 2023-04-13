@@ -8,10 +8,17 @@ import { Tokens } from '../../.mirrorful/theme';
 import Button from '../../Components/Button/Button';
 import Input from '../../Components/Input/input';
 
+import { Auth } from '@supabase/auth-ui-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
+
 const Login = function () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongEmail, setWrongEmail] = useState(false);
+
+  const session = useSession();
+  const supabase = useSupabaseClient();
 
   const router = useRouter();
 
@@ -83,6 +90,20 @@ const Login = function () {
             Join free today
           </a>
         </p>
+        <div className="container" style={{ padding: '50px 0 100px 0' }}>
+          {!session ? (
+            <Auth
+              supabaseClient={supabase}
+              appearance={{ theme: ThemeSupa }}
+              theme="dark"
+            />
+          ) : (
+            <>
+              {console.log('dldlj')}
+              <p>Account page will go here.</p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

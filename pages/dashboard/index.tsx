@@ -5,23 +5,32 @@ import NewExpense from '@/Components/NewExpense/NewExpense';
 
 //import Input from '../../Components/Input/input';
 import { createClient } from '@supabase/supabase-js';
-import GetStaticProps from '../supabase';
+import { supabase } from '../supabase';
 
-function Dashboard({ data }: { data: any }) {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SERVICE_ROLE_KEY as string;
-
-  const suprabaseAdmin = createClient(supabaseUrl || '', supabaseAnonKey || '');
-
-  console.log(data);
+function Dashboard({ countries }) {
   return (
     <div style={{ backgroundColor: 'white' }}>
+      <ul>
+        {countries?.map((country) => (
+          <li key={country.id}>{country.name}</li>
+        ))}
+      </ul>
       <Nav />
       <Budget />
       <NewExpense />
       <Footer />
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  let { data } = await supabase.from('countries').select();
+
+  return {
+    props: {
+      countries: data,
+    },
+  };
 }
 
 export default Dashboard;

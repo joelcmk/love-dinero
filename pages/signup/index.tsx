@@ -4,10 +4,22 @@ import Button from '../../Components/Button/Button';
 import { useState } from 'react';
 import styles from './Signup.module.css';
 
+import { createClient } from '@supabase/supabase-js';
+import supabase from '../supabase';
+
 const Signup = function () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongEmail, setWrongEmail] = useState(false);
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    const { data, error } = await supabase.auth.signUp({
+      email: 'example@email.com',
+      password: 'example-password',
+    });
+    console.log(data, error);
+  };
 
   return (
     <div style={{ width: '100%', height: '100vh', display: 'flex' }}>
@@ -49,7 +61,10 @@ const Signup = function () {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button style={{ backgroundColor: Tokens.colors.button.base }}>
+            <Button
+              onClick={handleSignUp}
+              style={{ backgroundColor: Tokens.colors.button.base }}
+            >
               Create
             </Button>
           </form>
