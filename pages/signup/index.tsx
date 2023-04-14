@@ -5,7 +5,7 @@ import { useState } from 'react';
 import styles from './Signup.module.css';
 
 import { createClient } from '@supabase/supabase-js';
-import supabase from '../supabase';
+import { supabase } from '../supabase';
 
 const Signup = function () {
   const [email, setEmail] = useState('');
@@ -13,12 +13,13 @@ const Signup = function () {
   const [wrongEmail, setWrongEmail] = useState(false);
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
-    const { data, error } = await supabase.auth.signUp({
-      email: 'example@email.com',
+    supabase.auth.signUp({
+      email: 'joelcmk+ls@gmail.com',
       password: 'example-password',
+      options: {
+        emailRedirectTo: 'https://example.com/welcome',
+      },
     });
-    console.log(data, error);
   };
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -15,14 +16,13 @@ import {
   useSupabaseClient,
   useUser,
 } from '@supabase/auth-helpers-react';
+import { createClient } from '@supabase/supabase-js';
+import { supabase } from '../supabase';
 
-const Login = function () {
+const Login = function ({ supabase }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongEmail, setWrongEmail] = useState(false);
-
-  const session = useSession();
-  const supabase = useSupabaseClient();
 
   const router = useRouter();
 
@@ -32,7 +32,7 @@ const Login = function () {
     if (user) {
       router.push('/dashboard');
     } else {
-      router.push('/login');
+      router.push('/');
     }
   }, [user]);
 
@@ -40,6 +40,25 @@ const Login = function () {
     event.preventDefault();
     router.push('/dashboard');
   }
+
+  async function signInWithEmail(event) {
+    event.preventDefault();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    if (error) {
+      setWrongEmail(true);
+    }
+  }
+
+  async function signInWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    });
+  }
+
+  console.log(wrongEmail);
 
   return (
     <div style={{ width: '100%', height: '100vh', display: 'flex' }}>
@@ -57,12 +76,18 @@ const Login = function () {
           </h2>
           <div style={{ maxWidth: '256.5px', color: 'red' }}>
             {wrongEmail ? (
-              <span>Please re-enter you email and password.</span>
+              <span>
+                Opps... Something went wrong! Please re-enter you email and
+                password.
+              </span>
             ) : (
               ''
             )}
           </div>
-          <form style={{ display: 'flex', flexDirection: 'column' }}>
+          <form
+            onSubmit={signInWithEmail}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
             <p>Email</p>
 
             <Input
@@ -84,9 +109,11 @@ const Login = function () {
             />
 
             <Button>Submit</Button>
-            <Button variant="google">Or sign-in with Google</Button>
+            <Button onClick={signInWithGoogle} variant="google">
+              Or sign-in with Google
+            </Button>
             <Button
-              onClick={(event) => {
+              onClick={(event: any) => {
                 handleDemoLogin(event);
               }}
               variant="demo"
@@ -104,20 +131,7 @@ const Login = function () {
             Join free today
           </a>
         </p>
-        <div className="container" style={{ padding: '50px 0 100px 0' }}>
-          {!session ? (
-            <Auth
-              supabaseClient={supabase}
-              appearance={{ theme: ThemeSupa }}
-              theme="dark"
-            />
-          ) : (
-            <>
-              {console.log('dldlj')}
-              <p>Account page will go here.</p>
-            </>
-          )}
-        </div>
+        <div className="container" style={{ padding: '50px 0 100px 0' }}></div>
       </div>
     </div>
   );

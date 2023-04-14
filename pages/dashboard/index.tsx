@@ -5,7 +5,7 @@ import NewExpense from '@/Components/NewExpense/NewExpense';
 import { useRouter } from 'next/router';
 
 //import Input from '../../Components/Input/input';
-import { createClient } from '@supabase/supabase-js';
+
 import { supabase } from '../supabase';
 
 import {
