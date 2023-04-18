@@ -6337,6 +6337,11 @@
   dependencies:
     "find-up" "^3.0.0"
 
+"pnpm@^8.3.0":
+  "integrity" "sha512-wRS8ap/SPxBqbUMzcUNkoA0suLqk9BqMlvi8dM2FRuhwUDgqVGYLc5jQ6Ww3uqVc+84zJvN2GYmTWCubaoWPtQ=="
+  "resolved" "https://registry.npmjs.org/pnpm/-/pnpm-8.3.0.tgz"
+  "version" "8.3.0"
+
 "posix-character-classes@^0.1.0":
   "integrity" "sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg=="
   "resolved" "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz"

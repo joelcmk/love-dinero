@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import Profile from './profile';
 import '../.mirrorful/theme.css';
 
 import { useState } from 'react';

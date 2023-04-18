@@ -4,30 +4,22 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { supabase } from './supabase';
-
-import {
-  useUser,
-  useSupabaseClient,
-  useSession,
-} from '@supabase/auth-helpers-react';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 function Profile() {
   const [isLoading, setIsLoading] = useState(false);
-  const supabase = useSupabaseClient();
-  const user = useUser();
-  const session = useSession();
 
+  const user = useUser();
   const router = useRouter();
+  const supabase = useSupabaseClient();
 
   useEffect(() => {
     if (isLoading && !user) {
       router.push('/');
     } else {
-      setIsLoading(true);
-      return;
+      return setIsLoading(true);
     }
-  }, [user, isLoading]);
+  }, [user, isLoading, router]);
 
   return (
     <>

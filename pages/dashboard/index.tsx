@@ -2,10 +2,9 @@ import Nav from '@/Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import Budget from '../../Components/Budget/Budget';
 import NewExpense from '@/Components/NewExpense/NewExpense';
-import Button from '@/Components/Button/Button';
+// import Button from '@/Components/Button/Button';
 import { useRouter } from 'next/router';
-
-//import Input from '../../Components/Input/input';
+// //import Input from '../../Components/Input/input';
 
 import { supabase } from '../supabase';
 
@@ -16,28 +15,32 @@ import {
 } from '@supabase/auth-helpers-react';
 import { useEffect } from 'react';
 
-function Dashboard({ countries, session }) {
-  const supabase = useSupabaseClient();
-  const user = useUser();
-  const router = useRouter();
+function Dashboard({ countries }) {
+  // const user = useUser();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (!session) {
-      router.push('/');
-    }
-  }, [user, session, router]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push('/');
+  //   }
+  // }, [user, router]);
+
+  // //console.log(user);
+  console.log(countries);
 
   return (
     <div style={{ backgroundColor: 'white' }}>
+      <Nav />
       <ul>
         {countries?.map((country) => (
-          <li key={country.id}>{country.name}</li>
+          <>
+            <li key={country.id}>{country.category}</li>
+            <li>{country.amount}</li>
+          </>
         ))}
       </ul>
-      <Nav />
       <Budget />
       <NewExpense />
-      <Button onClick={() => supabase.auth.signOut()}>Sign out</Button>
       <Footer />
     </div>
   );
@@ -45,8 +48,8 @@ function Dashboard({ countries, session }) {
 
 export async function getServerSideProps() {
   let { data } = await supabase.from('Test-table').select();
-  //let { newData } = await supabase.from('Test-table').select();
 
+  console.log('dldlk');
   return {
     props: {
       countries: data,
