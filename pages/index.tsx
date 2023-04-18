@@ -2,6 +2,7 @@
 import Head from 'next/head';
 import Login from './login';
 import Dashboard from './dashboard';
+import Profile from './profile';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -30,7 +31,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Login supabase={supabase} />
+      {!session ? (
+        <Login supabase={supabase} />
+      ) : (
+        <Dashboard session={session} />
+      )}
     </>
   );
 }

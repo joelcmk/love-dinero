@@ -16,18 +16,16 @@ import {
 } from '@supabase/auth-helpers-react';
 import { useEffect } from 'react';
 
-function Dashboard({ countries }) {
+function Dashboard({ countries, session }) {
   const supabase = useSupabaseClient();
   const user = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    if (!session) {
       router.push('/');
-    } else {
-      router.push('/dashboard');
     }
-  }, [user]);
+  }, [user, session, router]);
 
   return (
     <div style={{ backgroundColor: 'white' }}>

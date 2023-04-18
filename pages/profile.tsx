@@ -2,25 +2,33 @@ import Nav from '../Components/Nav/Nav';
 import Button from '../Components/Button/Button';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { supabase } from './supabase';
 
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import {
+  useUser,
+  useSupabaseClient,
+  useSession,
+} from '@supabase/auth-helpers-react';
 
 function Profile() {
-  const user = useUser();
+  const [isLoading, setIsLoading] = useState(false);
   const supabase = useSupabaseClient();
+  const user = useUser();
+  const session = useSession();
+
   const router = useRouter();
-  console.log(user);
 
   useEffect(() => {
-    if (user) {
+    if (isLoading && !user) {
       router.push('/');
     } else {
-      router.push('/profile');
+      setIsLoading(true);
+      return;
     }
-  }, [user, router]);
+  }, [user, isLoading]);
+
   return (
     <>
       <Nav />
