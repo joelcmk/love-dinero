@@ -2,6 +2,7 @@ import Nav from '@/Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import Budget from '../../Components/Budget/Budget';
 import NewExpense from '@/Components/NewExpense/NewExpense';
+import Button from '@/Components/Button/Button';
 import { useRouter } from 'next/router';
 
 //import Input from '../../Components/Input/input';
@@ -16,13 +17,15 @@ import {
 import { useEffect } from 'react';
 
 function Dashboard({ countries }) {
-  const router = useRouter();
-  const user = useUser();
   const supabase = useSupabaseClient();
+  const user = useUser();
+  const router = useRouter();
 
   useEffect(() => {
     if (!user) {
-      router.push('/login');
+      router.push('/');
+    } else {
+      router.push('/dashboard');
     }
   }, [user]);
 
@@ -36,8 +39,8 @@ function Dashboard({ countries }) {
       <Nav />
       <Budget />
       <NewExpense />
+      <Button onClick={() => supabase.auth.signOut()}>Sign out</Button>
       <Footer />
-      <button onClick={() => supabase.auth.signOut()}>Log out</button>
     </div>
   );
 }
