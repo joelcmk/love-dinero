@@ -3,6 +3,7 @@
 .nav {
   background-color: #29c0a9;
   height: 50px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,4 +17,41 @@
 .logo {
   margin-left: 20px;
   color: var(--color-text-white);
+}
+
+.profile:hover {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile:hover button {
+  display: block;
+}
+
+.profile {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  color: var(--color-text-white);
+}
+
+.profile:hover p {
+  position: absolute;
+  text-decoration: underline;
+  color: var(--color-text-white);
+}
+
+.profile button {
+  display: none;
+}
+
+.profile:hover .subMenu {
+  margin-top: 100px;
+  height: 50px;
+  width: 100%;
+  background-color: var(--color-light-green-50);
 }

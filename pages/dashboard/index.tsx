@@ -4,7 +4,7 @@ import Budget from '../../Components/Budget/Budget';
 import NewExpense from '@/Components/NewExpense/NewExpense';
 // import Button from '@/Components/Button/Button';
 import { useRouter } from 'next/router';
-// //import Input from '../../Components/Input/input';
+import Input from '../../Components/Input/input';
 
 import { supabase } from '../supabase';
 
@@ -41,13 +41,16 @@ function Dashboard({ countries }) {
       </ul>
       <Budget />
       <NewExpense />
+      <Input variant="green" placeholder="test"></Input>
       <Footer />
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  let { data } = await supabase.from('Test-table').select();
+  //let { data } = await supabase.from('Test-table').select();
+
+  let { data } = await supabase.from('profiles').select();
 
   console.log('dldlk');
   return {

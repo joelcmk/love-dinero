@@ -3,6 +3,7 @@ import { Tokens } from '../../.mirrorful/theme';
 import Button from '../../Components/Button/Button';
 import { useState } from 'react';
 import styles from './Signup.module.css';
+import Input from '../../Components/Input/input';
 
 import { createClient } from '@supabase/supabase-js';
 import { supabase } from '../supabase';
@@ -46,21 +47,22 @@ const Signup = function () {
 
           <form style={{ display: 'flex', flexDirection: 'column' }}>
             <p>Email</p>
-            <input
-              className={styles.input}
+            <Input
               placeholder="you@email.com"
               value={email}
+              variant="login"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
             />
+
             <p>Password</p>
-            <input
-              className={styles.input}
+            <Input
+              variant="login"
               placeholder="password"
               value={password}
               type="password"
               onChange={(e) => setPassword(e.target.value)}
-            />
+            ></Input>
 
             <Button
               onClick={handleSignUp}
