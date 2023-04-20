@@ -1,3 +1,7 @@
+.root {
+  --shadowxwy: red;
+}
+
 .budget {
   display: flex;
   justify-content: space-evenly;
@@ -5,8 +9,7 @@
 }
 
 .wrapper {
-  --shadow-color: 0deg 0% 60%;
-  background-color: #f3f3f3;
+  background-color: var(--budget_wrapper_background);
   display: flex;
   justify-content: center;
   border-radius: 20px;
@@ -50,7 +53,7 @@
 }
 
 .expenses tr:nth-child(even) {
-  background-color: #a9e2df;
+  background-color: var(--budget_wrapper_background_secondary);
 }
 
 .budget input {

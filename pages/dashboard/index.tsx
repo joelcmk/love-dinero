@@ -26,10 +26,9 @@ function Dashboard({ countries }) {
   // }, [user, router]);
 
   // //console.log(user);
-  console.log(countries);
 
   return (
-    <div style={{ backgroundColor: 'white' }}>
+    <div>
       <Nav />
       <ul>
         {countries?.map((country) => (

@@ -122,10 +122,7 @@ const Login = function ({ supabase }) {
         </div>
         <p>
           Don&apos;t have an account?{' '}
-          <a
-            style={{ color: Tokens.colors.text.green, fontWeight: 'bold' }}
-            href="/signup"
-          >
+          <a style={{ color: Tokens.colors.text.red }} href="/signup">
             Join free today
           </a>
         </p>

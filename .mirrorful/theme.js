@@ -65,6 +65,13 @@ export const Tokens = {
       base: '#ffffff',
       white: '#ffffff',
       green: '#028d78',
+      red: '#f84a4a',
+    },
+    'dark-mode': {
+      '500': '#030303',
+      base: '#030303',
+      'budget primary': '#404040',
+      'budget secondary': '#3a615c',
     },
   },
   fontSizes: {

@@ -53,6 +53,11 @@
   --color-text: #ffffff;
   --color-text-white: #ffffff;
   --color-text-green: #028d78;
+  --color-text-red: #f84a4a;
+  --color-dark-mode: #030303;
+  --color-dark-mode-500: #030303;
+  --color-dark-mode-budget-primary: #404040;
+  --color-dark-mode-budget-secondary: #3a615c;
   --font-size-sm: 1rem;
   --font-size-md: 1.2rem;
   --font-size-lg: 1.4rem;
