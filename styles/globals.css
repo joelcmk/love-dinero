@@ -5,10 +5,15 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
+  --body_background: var(--color-light-green-300);
   --body_text: black;
   --shadow-color: 0deg 0% 60%;
   --budget_wrapper_background: #f3f3f3;
   --budget_wrapper_background_secondary: #a9e2df;
+  --dasboard_background_color: white;
+  --nav_background_color: var(--color-light-green);
+  --nav_profile_background_color: var(--color-light-green-50);
+  --footer_background_color: var(--color-light-green);
 }
 
 [data-theme='dark'] {
@@ -19,6 +24,10 @@
   --budget_wrapper_background_secondary: var(
     --color-dark-mode-budget-secondary
   );
+  --dasboard_background_color: var(--color-dark-mode);
+  --nav_background_color: var(--color-dark-mode-budget-secondary);
+  --nav_profile_background_color: var(--color-dark-mode-budget-primary);
+  --footer_background_color: var(--color-dark-mode-budget-secondary);
 }
 
 * {

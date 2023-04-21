@@ -4,7 +4,6 @@ import Budget from '../../Components/Budget/Budget';
 import NewExpense from '@/Components/NewExpense/NewExpense';
 // import Button from '@/Components/Button/Button';
 import { useRouter } from 'next/router';
-import Input from '../../Components/Input/input';
 
 import { supabase } from '../supabase';
 
@@ -16,19 +15,8 @@ import {
 import { useEffect } from 'react';
 
 function Dashboard({ countries }) {
-  // const user = useUser();
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     router.push('/');
-  //   }
-  // }, [user, router]);
-
-  // //console.log(user);
-
   return (
-    <div>
+    <div style={{ backgroundColor: 'var(--dasboard_background_color)' }}>
       <Nav />
       <ul>
         {countries?.map((country) => (
@@ -40,7 +28,7 @@ function Dashboard({ countries }) {
       </ul>
       <Budget />
       <NewExpense />
-      <Input variant="green" placeholder="test"></Input>
+
       <Footer />
     </div>
   );

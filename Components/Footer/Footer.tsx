@@ -2,7 +2,7 @@ function Footer() {
   return (
     <div
       style={{
-        backgroundColor: '#29c0a9',
+        backgroundColor: 'var(--footer_background_color)',
         marginTop: '40px',
         width: '100%',
         height: '150px',
