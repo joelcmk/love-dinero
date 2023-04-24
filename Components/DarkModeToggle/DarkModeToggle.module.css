@@ -6,7 +6,7 @@
 }
 
 .slider {
-  background-color: #ccc;
+  background-color: #abecfd;
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -17,7 +17,7 @@
 }
 
 .slider:before {
-  background-color: #fff;
+  background-color: #fffb03;
   bottom: 4px;
   content: '';
   height: 26px;
@@ -28,11 +28,12 @@
 }
 
 input:checked + .slider {
-  background-color: #66bb6a;
+  background-color: #3c3c3c;
 }
 
 input:checked + .slider:before {
   transform: translateX(26px);
+  background-color: rgb(218, 218, 218);
 }
 
 .slider.round {
