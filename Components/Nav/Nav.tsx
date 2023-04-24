@@ -19,18 +19,20 @@ function Nav() {
         <h3 className={styles.logo}>
           <a href="/dashboard">LoveDiner</a>o
         </h3>
-        <div>
+        <div
+          style={{ flexGrow: '2', textAlign: 'right', alignSelf: 'flex-end' }}
+        >
           <DarkModeToggle />
-          <div className={styles.profile}>
-            <p>Account</p>
-            <div className={styles.subMenu}>
-              <Button
-                style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
-                onClick={() => supabase.auth.signOut()}
-              >
-                Sign Out
-              </Button>
-            </div>
+        </div>
+        <div className={styles.profile}>
+          <p>Account</p>
+          <div className={styles.subMenu}>
+            <Button
+              style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
+              onClick={() => supabase.auth.signOut()}
+            >
+              Sign Out
+            </Button>
           </div>
         </div>
       </div>
