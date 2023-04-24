@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './Nav.module.css';
 import Image from 'next/image';
 import Button from '../Button/Button';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 import {
   useUser,
   useSupabaseClient,
@@ -18,15 +19,18 @@ function Nav() {
         <h3 className={styles.logo}>
           <a href="/dashboard">LoveDiner</a>o
         </h3>
-        <div className={styles.profile}>
-          <p>Account</p>
-          <div className={styles.subMenu}>
-            <Button
-              style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
-              onClick={() => supabase.auth.signOut()}
-            >
-              Sign Out
-            </Button>
+        <div>
+          <DarkModeToggle />
+          <div className={styles.profile}>
+            <p>Account</p>
+            <div className={styles.subMenu}>
+              <Button
+                style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
+                onClick={() => supabase.auth.signOut()}
+              >
+                Sign Out
+              </Button>
+            </div>
           </div>
         </div>
       </div>
