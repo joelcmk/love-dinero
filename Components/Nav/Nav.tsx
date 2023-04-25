@@ -20,7 +20,12 @@ function Nav() {
           <a href="/dashboard">LoveDiner</a>o
         </h3>
         <div
-          style={{ flexGrow: '2', textAlign: 'right', alignSelf: 'flex-end' }}
+          style={{
+            flexGrow: '2',
+            textAlign: 'right',
+            boxSizing: 'border-box',
+            height: '34px',
+          }}
         >
           <DarkModeToggle />
         </div>
