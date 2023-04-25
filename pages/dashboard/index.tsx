@@ -26,8 +26,17 @@ function Dashboard({ countries }) {
           </>
         ))}
       </ul>
-      <Budget />
-      <NewExpense />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ width: '400px' }}></div>
+        <Budget />
+        <NewExpense />
+      </div>
 
       <Footer />
     </div>
