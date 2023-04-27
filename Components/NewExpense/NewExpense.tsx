@@ -6,17 +6,8 @@ import Button from '../Button/Button';
 import { Tokens } from '../../.mirrorful/theme';
 import { getDatabase, ref, set } from 'firebase/database';
 
-function NewExpense(props) {
+function NewExpense({ addExpense, setNewAmount, newAmount }) {
   const [category, setCategory] = useState('');
-  const [expense, setExpense] = useState('');
-
-  const handleChange = (e) => {
-    setExpense(e.target.value);
-  };
-
-  const handleCategory = (e) => {
-    setCategory(e.value);
-  };
 
   const options = [
     { value: 'home', label: 'Home', color: '#00B8D9' },
@@ -84,13 +75,20 @@ function NewExpense(props) {
     <div className={styles.newExpense}>
       <h2>Add a new expense</h2>
       <span>Select a category</span>
-      <CreatableSelect
-        className={styles.categoryList}
-        styles={colourStyles}
-        options={options}
-        onChange={handleCategory}
-      />
-      <form className={styles.input}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addExpense(category);
+          setNewAmount('');
+        }}
+        className={styles.input}
+      >
+        <CreatableSelect
+          className={styles.categoryList}
+          styles={colourStyles}
+          options={options}
+          onChange={(e) => setCategory(e.value)}
+        />
         <div className={styles.amount}>
           <span>Add amount</span>
           <input
@@ -98,8 +96,8 @@ function NewExpense(props) {
             placeholder="$"
             name="expense"
             className={styles.expense}
-            value={expense}
-            onChange={handleChange}
+            value={newAmount}
+            onChange={(e) => setNewAmount(e.target.value)}
           />
         </div>
 
