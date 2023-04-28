@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import styles from './Budget.module.css';
-import { Tokens } from '../../.mirrorful/theme';
 
-function Budget() {
+function Budget({ expenses }) {
   const [target, setTarget] = useState(true);
 
+  console.log(expenses);
+
   const [updateTarget, setUpdateTarget] = useState(false);
+
+  function total(expense) {
+    let total = 0;
+    for (let i = 0; i < expenses.length; i++) {
+      if (expenses[i].category === expense) {
+        total += expenses[i].amount;
+      }
+    }
+    return total;
+  }
+
+  //const homeTotal = expenses.filter((expense) => expense.category === 'home');
+
+  console.log(total('home'));
 
   return (
     <div className={styles.budget}>
@@ -20,37 +35,37 @@ function Budget() {
             </tr>
             <tr>
               <td>Home</td>
-              <td>$25</td>
+              <td>${total('home')}</td>
               <td>$25</td>
             </tr>
             <tr>
               <td>Food</td>
-              <td>$30</td>
+              <td>${total('food')}</td>
               <td>$25</td>
             </tr>
             <tr>
               <td>Shopping</td>
-              <td>$30</td>
+              <td>${total('shopping')}</td>
               <td>$25</td>
             </tr>
             <tr>
               <td>Utilities</td>
-              <td>$30</td>
+              <td>${total('utilities')}</td>
               <td>$25</td>
             </tr>
             <tr>
               <td>Household</td>
-              <td>$30</td>
+              <td>${total('household')}</td>
               <td>$25</td>
             </tr>
             <tr>
               <td>Transportation</td>
-              <td>$30</td>
+              <td>${total('transportation')}</td>
               <td>$25</td>
             </tr>
             <tr>
               <td>Ohter</td>
-              <td>$30</td>
+              <td>${total('other')}</td>
               <td>$25</td>
             </tr>
             <tr>

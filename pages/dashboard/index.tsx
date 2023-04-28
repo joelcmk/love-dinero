@@ -24,7 +24,7 @@ function Dashboard({ session }) {
   const [errorText, setErrorText] = useState('');
 
   useEffect(() => {
-    const fetchTodos = async () => {
+    const fetchExpenses = async () => {
       const { data: todos, error } = await supabase
         .from('todos')
         .select('*')
@@ -34,7 +34,7 @@ function Dashboard({ session }) {
       else setTodos(todos);
     };
 
-    fetchTodos();
+    fetchExpenses();
   }, [supabase]);
 
   useEffect(() => {
@@ -154,7 +154,7 @@ function Dashboard({ session }) {
         }}
       >
         <div style={{ width: '400px' }}></div>
-        <Budget />
+        <Budget expenses={todos} />
         <NewExpense
           addExpense={addExpense}
           setNewCategory={newCategory}
