@@ -9,7 +9,7 @@ import {
   Session,
 } from '@supabase/auth-helpers-react';
 
-function Nav() {
+function Nav({ setExpensesList }) {
   const supabase = useSupabaseClient();
   const user = useUser();
 
@@ -17,7 +17,7 @@ function Nav() {
     <div style={{ display: 'flex' }}>
       <div className={styles.nav}>
         <h3 className={styles.logo}>
-          <a href="/dashboard">LoveDiner</a>o
+          <a onClick={() => setExpensesList(false)}>LoveDinero</a>
         </h3>
         <div
           style={{
@@ -37,6 +37,17 @@ function Nav() {
               onClick={() => supabase.auth.signOut()}
             >
               Sign Out
+            </Button>
+            <Button
+              style={{
+                width: '180px',
+                margin: '0 auto',
+                marginTop: '5px',
+                marginBottom: '5px',
+              }}
+              onClick={() => setExpensesList(true)}
+            >
+              Expenses
             </Button>
           </div>
         </div>

@@ -2,26 +2,24 @@ import Nav from '@/Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import Budget from '../../Components/Budget/Budget';
 import NewExpense from '@/Components/NewExpense/NewExpense';
-import Profile from '@/Components/Profile/Profile';
-import Button from '@/Components/Button/Button';
+
+import Expenses from '@/Components/Expenses/Expenses';
 
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useEffect, useState } from 'react';
 
-type Todos = Database['public']['Tables']['todos']['Row'];
-
-function Dashboard({ session }) {
+function Dashboard({ session, router }) {
   const supabase = useSupabaseClient();
   const user = useUser();
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
 
   const [todos, setTodos] = useState<Todos[]>([]);
   const [newCategory, setNewCategory] = useState('');
   const [newAmoutn, setNewAmount] = useState(null);
   const [errorText, setErrorText] = useState('');
+
+  const [expensesList, setExpensesList] = useState(false);
+
+  console.log(expensesList);
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -36,10 +34,6 @@ function Dashboard({ session }) {
 
     fetchExpenses();
   }, [supabase]);
-
-  useEffect(() => {
-    getProfile();
-  }, [session]);
 
   const addExpense = async (newCategory: string) => {
     let category = newCategory.trim();
@@ -69,99 +63,31 @@ function Dashboard({ session }) {
     }
   };
 
-  async function getProfile() {
-    try {
-      setLoading(true);
-
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setUsername(data.username);
-        setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      alert('Error loading user data!');
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function updateProfile({ username, website, avatar_url }) {
-    try {
-      setLoading(true);
-
-      const updates = {
-        id: user.id,
-        username,
-        website,
-        avatar_url,
-        updated_at: new Date().toISOString(),
-      };
-
-      let { error } = await supabase.from('profiles').upsert(updates);
-      if (error) throw error;
-      alert('Profile updated!');
-    } catch (error) {
-      alert('Error updating the data!');
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
   return (
     <div style={{ backgroundColor: 'var(--dasboard_background_color)' }}>
-      <div className="w-full">
-        <h1 className="mb-12">Expenses list</h1>
-        {!!errorText && <Alert text={errorText} />}
-        <div className="bg-white shadow overflow-hidden rounded-md">
-          <ul>
-            {todos.map((expense) => (
-              <Expense
-                key={expense.id}
-                expense={expense}
-                onDelete={() => deleteExpense(expense.id)}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
-      <Nav />
-      <Profile
-        uid={user.id}
-        url={avatar_url}
-        size={150}
-        onUpload={(url) => {
-          setAvatarUrl(url);
-          updateProfile({ username, website, avatar_url: url });
-        }}
-      />
-
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-        }}
-      >
-        <div style={{ width: '400px' }}></div>
-        <Budget expenses={todos} />
-        <NewExpense
-          addExpense={addExpense}
-          setNewCategory={newCategory}
-          setNewAmount={setNewAmount}
-          newAmount={newAmoutn}
-        />
-      </div>
+      <Nav setExpensesList={setExpensesList} />
+      {!expensesList ? (
+        <>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ width: '400px' }}></div>
+            <Budget expenses={todos} />
+            <NewExpense
+              addExpense={addExpense}
+              setNewCategory={newCategory}
+              setNewAmount={setNewAmount}
+              newAmount={newAmoutn}
+            />
+          </div>
+        </>
+      ) : (
+        <Expenses todos={todos} onDelete={deleteExpense} />
+      )}
 
       <Footer />
     </div>
@@ -169,40 +95,3 @@ function Dashboard({ session }) {
 }
 
 export default Dashboard;
-
-const Expense = ({
-  expense,
-  onDelete,
-}: {
-  todo: Todos;
-  onDelete: () => void;
-}) => {
-  return (
-    <li>
-      <div>
-        <div>
-          <div>
-            {console.log(expense.category)}
-            {expense.category} {expense.amount}
-          </div>
-        </div>
-        <div></div>
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onDelete();
-          }}
-        >
-          Delete
-        </Button>
-      </div>
-    </li>
-  );
-};
-
-const Alert = ({ text }: { text: string }) => (
-  <div>
-    <div>{text}</div>
-  </div>
-);

@@ -11,6 +11,7 @@ import {
   useSession,
   useSupabaseClient,
 } from '@supabase/auth-helpers-react';
+import Expenses from '../Components/Expenses/Expenses';
 
 export default function Home() {
   const router = useRouter();
@@ -33,7 +34,7 @@ export default function Home() {
       {!session ? (
         <Login supabase={supabase} />
       ) : (
-        <Dashboard session={session} />
+        <Dashboard session={session} router={router} />
       )}
     </>
   );
