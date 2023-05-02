@@ -14,12 +14,10 @@ const Signup = function () {
   const [wrongEmail, setWrongEmail] = useState(false);
 
   const handleSignUp = async (e) => {
+    e.preventDefault();
     supabase.auth.signUp({
-      email: 'joelcmk+ls@gmail.com',
-      password: 'example-password',
-      options: {
-        emailRedirectTo: 'https://example.com/welcome',
-      },
+      email: email,
+      password: password,
     });
   };
 
