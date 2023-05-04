@@ -12,9 +12,7 @@ import { IoFastFoodOutline } from 'react-icons/io5';
 import { TbFridge } from 'react-icons/tb';
 
 function Budget({ expenses }) {
-  const [target, setTarget] = useState(true);
-
-  console.log(expenses);
+  const [target, setTarget] = useState(false);
 
   const [updateTarget, setUpdateTarget] = useState(false);
 
@@ -27,10 +25,6 @@ function Budget({ expenses }) {
     }
     return total;
   }
-
-  //const homeTotal = expenses.filter((expense) => expense.category === 'home');
-
-  console.log(total('home'));
 
   return (
     <div className={styles.budget}>
@@ -49,7 +43,7 @@ function Budget({ expenses }) {
                 </div>{' '}
               </td>
               <td>${total('home')}</td>
-              <td>$25</td>
+              <td>{!target ? '25' : <input />}</td>
             </tr>
             <tr>
               <td>
@@ -116,8 +110,8 @@ function Budget({ expenses }) {
               <td></td>
               <td></td>
               <td>
-                <Button variant="update">
-                  {!updateTarget ? 'Update' : 'Done'}
+                <Button onClick={() => setTarget(!target)} variant="update">
+                  {!target ? 'Update' : 'Done'}
                 </Button>
               </td>
             </tr>
