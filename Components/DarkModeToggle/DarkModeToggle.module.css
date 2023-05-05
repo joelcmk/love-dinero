@@ -1,45 +1,14 @@
-.themeSwitch {
-  display: inline-block;
-  height: 34px;
-  position: relative;
-  width: 60px;
+.darkMode {
+  width: 30px;
+  height: 30px;
+  border-radius: 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.slider {
-  background-color: #abecfd;
-  bottom: 0;
+.darkMode:hover {
+  background-color: var(--dark_mode_button);
   cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: 0.4s;
-}
-
-.slider:before {
-  background-color: #fffb03;
-  bottom: 4px;
-  content: '';
-  height: 26px;
-  left: 4px;
-  position: absolute;
-  transition: 0.4s;
-  width: 26px;
-}
-
-input:checked + .slider {
-  background-color: #3c3c3c;
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-  background-color: rgb(218, 218, 218);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

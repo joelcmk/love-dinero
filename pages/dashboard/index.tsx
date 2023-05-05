@@ -17,11 +17,8 @@ function Dashboard({ session, router }) {
   const [newCategory, setNewCategory] = useState('');
   const [newAmoutn, setNewAmount] = useState(null);
   const [errorText, setErrorText] = useState('');
-  const [target, setTarget] = useState([]);
 
   const [expensesList, setExpensesList] = useState(false);
-
-  //console.log(expensesList);
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -35,20 +32,6 @@ function Dashboard({ session, router }) {
     };
 
     fetchExpenses();
-  }, [supabase]);
-
-  useEffect(() => {
-    const fetchTarget = async () => {
-      const { data: target2, error } = await supabase
-        .from('target2')
-        .select('*')
-        .order('id', { ascending: true });
-
-      if (error) console.log('error', error);
-      else setTarget(target2);
-    };
-
-    fetchTarget();
   }, [supabase]);
 
   const addExpense = async (newCategory: string) => {
@@ -70,31 +53,6 @@ function Dashboard({ session, router }) {
     }
   };
 
-  console.log(target[0] ? 'hey' : 'no target');
-
-  const addTarget = async () => {
-    const { data: target2, error } = await supabase
-      .from('target2')
-      .update({ home: 30 })
-      .eq('id', 1);
-    // let category = 'home';
-    // let amount = 20;
-    // if (category.length) {
-    //   const { data: target2, error } = await supabase
-    //     .from('target2')
-    //     .insert({ home: 0, user_id: user.id })
-    //     .select()
-    //     .single();
-
-    //   if (error) {
-    //     setErrorText(error.message);
-    //   } else {
-    //     setTarget([...target, target]);
-    //     setNewCategory('');
-    //   }
-    // }
-  };
-
   const deleteExpense = async (id: number) => {
     try {
       await supabase.from('todos').delete().eq('id', id).throwOnError();
@@ -106,7 +64,6 @@ function Dashboard({ session, router }) {
 
   return (
     <div style={{ backgroundColor: 'var(--dasboard_background_color)' }}>
-      <button onClick={addTarget}>click here</button>
       <Nav setExpensesList={setExpensesList} />
       {!expensesList ? (
         <>

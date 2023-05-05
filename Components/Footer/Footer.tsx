@@ -1,3 +1,4 @@
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 function Footer() {
   return (
     <div
@@ -8,8 +9,12 @@ function Footer() {
         height: '150px',
         position: 'relative',
         bottom: '0px',
+        display: 'flex',
+        padding: '20px',
       }}
-    ></div>
+    >
+      <DarkModeToggle />
+    </div>
   );
 }
 

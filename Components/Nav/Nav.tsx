@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Nav.module.css';
 import Image from 'next/image';
 import Button from '../Button/Button';
-import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
+
 import {
   useUser,
   useSupabaseClient,
@@ -26,9 +26,7 @@ function Nav({ setExpensesList }) {
             boxSizing: 'border-box',
             height: '34px',
           }}
-        >
-          <DarkModeToggle />
-        </div>
+        ></div>
         <div className={styles.profile}>
           <p>Account</p>
           <div className={styles.subMenu}>

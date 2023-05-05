@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDocument } from '../useDocument';
 import styles from './DarkModeToggle.module.css';
 
+import { MdOutlineDarkMode, MdOutlineWbSunny } from 'react-icons/md';
+
 function DarkModeToggle() {
   const [item, setItem] = useState(null);
-  const [checked, setChecked] = useState(false); // [1
+  const [darkMode, setDarkMode] = useState(false); // [1
   const document = useDocument();
 
   useEffect(() => {
@@ -17,34 +19,34 @@ function DarkModeToggle() {
   useEffect(() => {
     if (currentTheme) {
       document?.querySelector('body')?.setAttribute('data-theme', currentTheme);
-      setChecked(currentTheme === 'dark' ? true : false);
+      setDarkMode(currentTheme === 'dark' ? true : false);
     }
   }, [currentTheme]);
 
-  function switchTheme(e) {
-    if (e.target.checked) {
-      document?.querySelector('body')?.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      setChecked(true);
-    } else {
+  function handleDarkMode() {
+    if (darkMode) {
       document?.querySelector('body')?.setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light');
-      setChecked(false);
+      setDarkMode(false);
+    } else {
+      document?.querySelector('body')?.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      setDarkMode(true);
     }
   }
 
   return (
-    <>
-      <label className={styles.themeSwitch}>
-        <input
-          type="checkbox"
-          style={{ display: 'none' }}
-          checked={checked}
-          onChange={switchTheme}
+    <div className={styles.darkMode}>
+      {darkMode ? (
+        <MdOutlineWbSunny size="1.5em" color="white" onClick={handleDarkMode} />
+      ) : (
+        <MdOutlineDarkMode
+          size="1.5em"
+          color="white"
+          onClick={handleDarkMode}
         />
-        <div className={`${styles.slider} ${styles.round}`}></div>
-      </label>
-    </>
+      )}
+    </div>
   );
 }
 
