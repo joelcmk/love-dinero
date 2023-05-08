@@ -63,27 +63,30 @@ function Dashboard({ session, router }) {
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--dasboard_background_color)' }}>
+    <div
+      style={{
+        height: '100vh',
+        backgroundColor: 'var(--dasboard_background_color)',
+      }}
+    >
       <Nav setExpensesList={setExpensesList} />
       {!expensesList ? (
-        <>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
-            }}
-          >
-            <div style={{ width: '400px' }}></div>
-            <Budget expenses={todos} />
-            <NewExpense
-              addExpense={addExpense}
-              setNewCategory={newCategory}
-              setNewAmount={setNewAmount}
-              newAmount={newAmoutn}
-            />
-          </div>
-        </>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ width: '400px' }}></div>
+          <Budget expenses={todos} />
+          <NewExpense
+            addExpense={addExpense}
+            setNewCategory={newCategory}
+            setNewAmount={setNewAmount}
+            newAmount={newAmoutn}
+          />
+        </div>
       ) : (
         <Expenses todos={todos} onDelete={deleteExpense} />
       )}

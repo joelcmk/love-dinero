@@ -6,9 +6,10 @@ function Footer() {
         backgroundColor: 'var(--footer_background_color)',
         marginTop: '40px',
         width: '100%',
-        height: '150px',
-        position: 'relative',
-        bottom: '0px',
+        height: '100px',
+        position: 'fixed',
+        bottom: '0',
+        left: '0',
         display: 'flex',
         padding: '20px',
       }}

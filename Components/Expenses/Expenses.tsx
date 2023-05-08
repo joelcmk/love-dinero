@@ -9,13 +9,11 @@ function Expenses({
   expense: any;
   onDelete: any;
 }) {
-  console.log(todos);
   return (
-    <>
-      {todos.map((expense: any) => (
-        <div>
+    <div>
+      {todos.map((expense: any, index: any) => (
+        <div key={index}>
           <div>
-            {console.log(expense.category)}
             {expense.category} {expense.amount}
           </div>
 
@@ -30,7 +28,7 @@ function Expenses({
           </Button>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 
