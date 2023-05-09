@@ -1,7 +1,3 @@
-.root {
-  --shadowxwy: red;
-}
-
 .budget {
   display: flex;
   justify-content: space-evenly;

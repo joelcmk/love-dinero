@@ -3,15 +3,10 @@ import styles from './Nav.module.css';
 import Image from 'next/image';
 import Button from '../Button/Button';
 
-import {
-  useUser,
-  useSupabaseClient,
-  Session,
-} from '@supabase/auth-helpers-react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
 function Nav({ setExpensesList }) {
   const supabase = useSupabaseClient();
-  const user = useUser();
 
   return (
     <div style={{ display: 'flex' }}>
@@ -28,7 +23,7 @@ function Nav({ setExpensesList }) {
           }}
         ></div>
         <div className={styles.profile}>
-          <p>Account</p>
+          <p style={{ cursor: 'pointer' }}>Account</p>
           <div className={styles.subMenu}>
             <Button
               style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
