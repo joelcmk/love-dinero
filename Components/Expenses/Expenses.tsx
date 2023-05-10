@@ -27,25 +27,41 @@ function Expenses({
           borderRadius: '10px',
         }}
       >
-        <ul>
-          {todos.map((expense: any, index: any) => (
-            <li key={index}>
-              <div>
-                {expense.category} {expense.amount}
-              </div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Category</th>
+              <th>Expense</th>
+              <th></th>
+            </tr>
 
-              <Button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  onDelete(expense.id);
-                }}
-              >
-                Delete
-              </Button>
-            </li>
-          ))}
-        </ul>
+            {todos.map((expense: any, index: any) => (
+              <tr key={index}>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <p style={{ marginLeft: '1em' }}>{expense.category}</p>
+                  </div>{' '}
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <p style={{ marginLeft: '1em' }}>{expense.amount}</p>
+                  </div>{' '}
+                </td>
+                <td>
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      onDelete(expense.id);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
