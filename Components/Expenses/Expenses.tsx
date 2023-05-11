@@ -1,5 +1,6 @@
 import Nav from '@/Components/Nav/Nav';
 import Button from '@/Components/Button/Button';
+import styles from './Expense.module.css';
 
 function Expenses({
   expense,
@@ -25,13 +26,15 @@ function Expenses({
           width: '40%',
           height: '90%',
           borderRadius: '10px',
+          overflowY: 'auto',
         }}
+        // className={styles.wrapper}
       >
-        <table>
+        <table className={styles.expenses}>
           <tbody>
             <tr>
               <th>Category</th>
-              <th>Expense</th>
+              <th>Amount</th>
               <th></th>
             </tr>
 

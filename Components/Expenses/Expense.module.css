@@ -1,0 +1,78 @@
+.budget {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.wrapper {
+  background-color: var(--budget_wrapper_background);
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+    2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+    7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
+    17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
+    25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
+}
+
+.wrapper td {
+  padding-left: 20px;
+}
+
+.wrapper th {
+  height: 52px;
+}
+
+.wrapper tr {
+  height: 60px;
+}
+
+.wrapper td:last-child {
+  text-align: center;
+  padding-right: 20px;
+}
+
+.wrapper td:nth-child(2) {
+  text-align: center;
+}
+
+.expenses {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.expenses tr:nth-child(even) {
+  background-color: var(--budget_wrapper_background_secondary);
+}
+
+.budget input {
+  height: 40px;
+  border: none;
+  margin: 8px 0;
+  width: 80px;
+  padding: 0;
+  text-align: center;
+}
+
+.edit {
+  margin: 19px 0;
+  width: 80px;
+}
+
+.edit p {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 1100px) {
+  .budget {
+    display: flex;
+    flex-direction: column;
+  }
+}
