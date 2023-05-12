@@ -1,6 +1,15 @@
 import Nav from '@/Components/Nav/Nav';
 import Button from '@/Components/Button/Button';
 import styles from './Expense.module.css';
+import {
+  AiOutlineHome,
+  AiOutlineShopping,
+  AiOutlineCreditCard,
+  AiOutlineCar,
+  AiOutlineAppstoreAdd,
+} from 'react-icons/ai';
+import { IoFastFoodOutline } from 'react-icons/io5';
+import { TbFridge } from 'react-icons/tb';
 
 function Expenses({
   expense,
@@ -10,6 +19,52 @@ function Expenses({
   expense: any;
   onDelete: any;
 }) {
+  function icons(icon) {
+    switch (icon) {
+      case 'home':
+        return <AiOutlineHome />;
+      case 'shopping':
+        return <AiOutlineShopping />;
+      case 'credit card':
+        return <AiOutlineCreditCard />;
+      case 'car':
+        return <AiOutlineCar />;
+      case 'food':
+        return <IoFastFoodOutline />;
+      case 'utilities':
+        return <AiOutlineAppstoreAdd />;
+      case 'household':
+        return <TbFridge />;
+      default:
+        return <AiOutlineAppstoreAdd />;
+    }
+  }
+
+  function toUpperCase(category: string) {
+    return category.charAt(0).toUpperCase() + category.slice(1);
+  }
+
+  function addColor(category: string) {
+    switch (category) {
+      case 'home':
+        return '#00B8D9';
+      case 'shopping':
+        return '#F8BB00';
+      case 'transportation':
+        return '#46D7A8';
+      case 'car':
+        return 'var(--car)';
+      case 'food':
+        return '#0989F8';
+      case 'utilities':
+        return '#FE8D00';
+      case 'household':
+        return '#A5A8F8';
+      default:
+        return '#3ACB5F';
+    }
+  }
+
   return (
     <div
       style={{
@@ -42,7 +97,17 @@ function Expenses({
               <tr key={index}>
                 <td>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <p style={{ marginLeft: '1em' }}>{expense.category}</p>
+                    <p style={{ marginLeft: '1em' }}>
+                      <span
+                        style={{
+                          color:
+                            index % 2 ? addColor(expense.category) : 'black',
+                        }}
+                      >
+                        {icons(expense.category)}
+                      </span>{' '}
+                      {toUpperCase(expense.category)}
+                    </p>
                   </div>{' '}
                 </td>
                 <td>
