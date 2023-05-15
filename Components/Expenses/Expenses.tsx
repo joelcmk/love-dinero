@@ -78,7 +78,7 @@ function Expenses({
       <div
         style={{
           background: 'var(--budget_wrapper_background)',
-          width: '40%',
+          width: '30%',
           height: '90%',
           borderRadius: '10px',
           overflowY: 'auto',
@@ -87,10 +87,16 @@ function Expenses({
       >
         <table className={styles.expenses}>
           <tbody>
-            <tr>
-              <th>Category</th>
-              <th>Amount</th>
-              <th></th>
+            <tr
+              style={{
+                textAlign: 'left',
+                height: '50px',
+                borderBottom: '1px solid gray',
+              }}
+            >
+              <th style={{ paddingLeft: '1em' }}>Category</th>
+              <th style={{}}>Amount</th>
+              <th>Delete</th>
             </tr>
 
             {todos.map((expense: any, index: any) => (
@@ -115,13 +121,15 @@ function Expenses({
                     <p style={{ marginLeft: '1em' }}>{expense.amount}</p>
                   </div>{' '}
                 </td>
-                <td>
+                <td style={{ width: '100px' }}>
                   <Button
+                    variant="update"
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       onDelete(expense.id);
                     }}
+                    style={{ padding: '0 1em' }}
                   >
                     Delete
                   </Button>
