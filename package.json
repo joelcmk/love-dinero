@@ -40,6 +40,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.0",
     "eslint-plugin-import": "^2.25.3",

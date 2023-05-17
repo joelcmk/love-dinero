@@ -4,6 +4,7 @@ import Budget from '../../Components/Budget/Budget';
 import NewExpense from '@/Components/NewExpense/NewExpense';
 
 import Expenses from '@/Components/Expenses/Expenses';
+import Chart from '@/Components/Chart/Chart';
 
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useEffect, useState } from 'react';
@@ -78,7 +79,9 @@ function Dashboard({ session, router }) {
             alignItems: 'center',
           }}
         >
-          <div style={{ width: '400px' }}></div>
+          <div style={{ width: '400px' }}>
+            <Chart />
+          </div>
           <Budget expenses={todos} />
           <NewExpense
             addExpense={addExpense}

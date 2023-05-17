@@ -91,7 +91,6 @@ function Expenses({
               style={{
                 textAlign: 'left',
                 height: '50px',
-                borderBottom: '1px solid gray',
               }}
             >
               <th style={{ paddingLeft: '1em' }}>Category</th>
