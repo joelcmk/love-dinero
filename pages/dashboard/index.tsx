@@ -80,7 +80,7 @@ function Dashboard({ session, router }) {
           }}
         >
           <div style={{ width: '400px' }}>
-            <Chart />
+            <Chart expenses={todos} />
           </div>
           <Budget expenses={todos} />
           <NewExpense
