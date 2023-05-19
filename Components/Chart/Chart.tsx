@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import exp from 'constants';
+import { off } from 'process';
 
 function Chart({ expenses }) {
-  const svgRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  //const [data, setData] = useState([]);
+  const svgRef = useRef(null);
 
   function total(expense) {
     let total = 0;
@@ -17,8 +19,7 @@ function Chart({ expenses }) {
   }
 
   useEffect(() => {
-    console.log(expenses[0] ? 'expenses' : 'no expenses');
-    if (expenses[0]) {
+    if (!isLoading) {
       function totalByCategory() {
         const home = total('home');
         const shopping = total('shopping');
@@ -29,26 +30,30 @@ function Chart({ expenses }) {
         const other = total('other');
 
         return [
-          { category: 'home', amount: home, color: 'blue' },
-          { category: 'shopping', amount: shopping, color: 'green' },
-          { category: 'food', amount: food, color: 'red' },
+          { category: 'home', amount: home, color: '#00B8D9' },
+          { category: 'shopping', amount: shopping, color: '#F8BB00' },
+          { category: 'food', amount: food, color: '#0989F8' },
           {
             category: 'transportation',
             amount: transportation,
-            color: 'orange',
+            color: '#46D7A8',
           },
-          { category: 'utilities', amount: utilities, color: 'purple' },
-          { category: 'household', amount: household, color: 'pink' },
-          { category: 'other', amount: other, color: 'yellow' },
+          { category: 'utilities', amount: utilities, color: '#FE8D00' },
+          { category: 'household', amount: household, color: '#A5A8F8' },
+          { category: 'other', amount: other, color: '#3ACB5F' },
         ];
       }
 
       const nextData = totalByCategory();
-      //setData(totalByCategory());
-      console.log(nextData);
+
       test(nextData);
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
     }
-  }, []);
+  }, [expenses]);
+
+  console.log(isLoading);
 
   function test(data) {
     // retrieve the svg in which to plot the viz
@@ -126,15 +131,15 @@ function Chart({ expenses }) {
       .outerRadius(radius);
 
     /* for each data point include the following structure
-    g             // wrapping all arcs
-      g           // wrapping each arc
-        arc       // actual shape
-        line      // connecting line
-        text      // text label
-      g
-        arc
-        ...
-    */
+g             // wrapping all arcs
+  g           // wrapping each arc
+    arc       // actual shape
+    line      // connecting line
+    text      // text label
+  g
+    arc
+    ...
+*/
     // wrapping group, horizontally centered
     const groupArcs = group
       .append('g')
@@ -185,6 +190,7 @@ function Chart({ expenses }) {
 
     // include text elements associated with the arcs
     groupsArcs
+
       .append('text')
       .attr('x', 0)
       .attr('y', 0)
@@ -195,17 +201,18 @@ function Chart({ expenses }) {
       })
       .attr('transform', (d) => {
         const [x, y] = arc.centroid(d);
+        console.log(x, y);
         const offset = x > 0 ? 50 : -50;
         return `translate(${x + offset} ${y})`;
       })
       .html(
         ({ data: d }) => `
-        <tspan x="0" font-weight="bold">${
-          d.category
-        }:</tspan><tspan x="0" dy="18">${Math.round(
+    <tspan x="0" font-weight="bold">${
+      d.category
+    }:</tspan><tspan x="0" dy="18">${Math.round(
           (d.amount * 100) / sumOfAllExpenses
         )}% / $${d.amount}</tspan>
-      `
+  `
       )
       .style('opacity', 0)
       .style('visibility', 'hidden');
@@ -260,11 +267,16 @@ function Chart({ expenses }) {
       });
   }
 
+  function buttonTest() {
+    console.log();
+  }
+
   return (
     <>
       <div className="Chart">
         <svg className="chart-pie" ref={svgRef} viewBox="-10 0 500 250"></svg>
       </div>
+      <button onClick={buttonTest}>test</button>
     </>
   );
 }

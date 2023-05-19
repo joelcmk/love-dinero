@@ -52,8 +52,6 @@ function Expenses({
         return '#F8BB00';
       case 'transportation':
         return '#46D7A8';
-      case 'car':
-        return 'var(--car)';
       case 'food':
         return '#0989F8';
       case 'utilities':
