@@ -277,6 +277,7 @@ function Chart({ expenses }) {
   );
   const [path, setPath] = useState(null);
   const [trans, setTrans] = useState(null);
+  const [newTest, setTest] = useState(null);
 
   // let data = [
   //   { name: 'Catch tail', count: 10, color: '#00A99D' },
@@ -284,8 +285,6 @@ function Chart({ expenses }) {
   //   { name: "Drool over hooman's food", count: 30, color: '#DA5B41' },
   //   { name: 'Play with hooman', count: 40, color: '#9AA4AF' },
   // ];
-
-  console.log('dkdk');
 
   const data = totalByCategory();
 
@@ -299,10 +298,9 @@ function Chart({ expenses }) {
     }
   }, [expenses]);
 
-  console.log(circle);
-
   function test() {
-    let svg = select('.pie3')
+    let svg = d3
+      .select(svgRef.current)
       .append('svg')
       .attr('width', 100 * 2)
       .attr('height', 100 * 2)
@@ -388,6 +386,7 @@ function Chart({ expenses }) {
           y: d.layerY,
         };
         handleMouseOver(i.data, mousePosition);
+        setTest(mousePosition);
       })
       .on('mouseout', () => {
         handleMouseOut();
@@ -450,9 +449,9 @@ function Chart({ expenses }) {
     };
 
     const handleMouseOver = (data, mousePosition) => {
-      //console.log(data);
       setMousePosition(mousePosition);
       setSelectedArc(data);
+      //setTest(mousePosition);
     };
   }
 
@@ -492,26 +491,24 @@ function Chart({ expenses }) {
     }
   };
 
-  //console.log(Object.keys(selectedArc).length);
+  console.log(newTest);
 
   return (
     <div
       className="pie3"
-      ref={svgRef}
       style={{
         position: 'relative',
       }}
       id="arc"
     >
-      {Object.keys(selectedArc)?.length ? (
-        <DonutChartToolTip
-          pieClass="pie3"
-          tooltipClass={'donut-tooltip'}
-          name={selectedArc.name || ''}
-          count={selectedArc.count || ''}
-          mousePosition={mousePosition}
-        />
+      {Object.keys(selectedArc).length ? (
+        <DonutChartToolTip data={selectedArc} mousePosition={newTest} />
       ) : null}
+      <>
+        <div className="Chart">
+          <svg className="chart-pie" ref={svgRef} viewBox="-10 0 500 250"></svg>
+        </div>
+      </>
     </div>
   );
 }
