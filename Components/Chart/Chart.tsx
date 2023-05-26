@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef, use } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import exp from 'constants';
-import { off } from 'process';
 
 import * as shape from 'd3-shape';
 import { transition } from 'd3-transition';
-import { select, event } from 'd3-selection';
+import { select } from 'd3-selection';
 import { interpolate } from 'd3-interpolate';
 
 import DonutChartToolTip from './DonutChartToolTip';
@@ -45,6 +43,14 @@ function Chart({ expenses }) {
       { name: 'household', count: household, color: '#A5A8F8' },
       { name: 'other', count: other, color: '#3ACB5F' },
     ];
+  }
+
+  function sumOfAllExpenses(expenses) {
+    let total = 0;
+    for (let i = 0; i < expenses.length; i++) {
+      total += expenses[i].amount;
+    }
+    return total;
   }
 
   const [selectedArc, setSelectedArc] = useState({});
@@ -146,7 +152,11 @@ function Chart({ expenses }) {
       id="arc"
     >
       {Object.keys(selectedArc).length ? (
-        <DonutChartToolTip data={selectedArc} mousePosition={mousePosition} />
+        <DonutChartToolTip
+          data={selectedArc}
+          mousePosition={mousePosition}
+          total={sumOfAllExpenses(expenses)}
+        />
       ) : null}
       <>
         <div className="Chart" style={{ width: '200px' }}>

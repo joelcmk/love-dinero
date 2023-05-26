@@ -116,7 +116,7 @@ function Budget({ expenses }) {
               <td>${total('home')}</td>
               <td>
                 {!target ? (
-                  `$${home}`
+                  `$${home || 0}`
                 ) : (
                   <input
                     type="number"
@@ -136,7 +136,7 @@ function Budget({ expenses }) {
               <td>${total('food')}</td>
               <td>
                 {!target ? (
-                  `$${food}`
+                  `$${food || 0}`
                 ) : (
                   <input
                     type="number"
@@ -157,7 +157,7 @@ function Budget({ expenses }) {
               <td>${total('shopping')}</td>
               <td>
                 {!target ? (
-                  `$${shopping}`
+                  `$${shopping || 0}`
                 ) : (
                   <input
                     type="number"
@@ -177,7 +177,7 @@ function Budget({ expenses }) {
               <td>${total('utilities')}</td>
               <td>
                 {!target ? (
-                  `$${utilities}`
+                  `$${utilities || 0}`
                 ) : (
                   <input
                     type="number"
@@ -197,7 +197,7 @@ function Budget({ expenses }) {
               <td>${total('household')}</td>
               <td>
                 {!target ? (
-                  `$${household}`
+                  `$${household || 0}`
                 ) : (
                   <input
                     type="number"
@@ -217,7 +217,7 @@ function Budget({ expenses }) {
               <td>${total('transportation')}</td>
               <td>
                 {!target ? (
-                  `$${transportation}`
+                  `$${transportation || 0}`
                 ) : (
                   <input
                     value={transportation}
@@ -236,7 +236,7 @@ function Budget({ expenses }) {
               <td>${total('other')}</td>
               <td>
                 {!target ? (
-                  `$${other}`
+                  `$${other || 0}`
                 ) : (
                   <input
                     type="number"

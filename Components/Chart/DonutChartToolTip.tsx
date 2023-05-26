@@ -1,7 +1,6 @@
 import React from 'react';
 
-function DonutChartTooltip({ data, mousePosition }) {
-  console.log(data);
+function DonutChartTooltip({ data, mousePosition, total }) {
   const toCapital = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -27,7 +26,9 @@ function DonutChartTooltip({ data, mousePosition }) {
       }}
     >
       <p>{toCapital(data.name)}</p>
-      <p>${data.count}</p>
+      <p>
+        ${data.count} / {Math.round((data.count * 100) / total)}%
+      </p>
     </div>
   );
 }

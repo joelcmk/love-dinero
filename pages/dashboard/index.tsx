@@ -21,6 +21,8 @@ function Dashboard({ session, router }) {
 
   const [expensesList, setExpensesList] = useState(false);
 
+  //console.log(expensesList);
+
   useEffect(() => {
     const fetchExpenses = async () => {
       const { data: todos, error } = await supabase
