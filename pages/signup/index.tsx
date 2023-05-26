@@ -62,16 +62,14 @@ const Signup = function () {
               onChange={(e) => setPassword(e.target.value)}
             ></Input>
 
-            <Button
-              onClick={handleSignUp}
-              style={{ backgroundColor: Tokens.colors.button.base }}
-            >
-              Create
-            </Button>
+            <Button onClick={handleSignUp}>Create</Button>
           </form>
         </div>
         <p>
-          Already have an account? <a href="/login">Log in here</a>
+          Already have an account?{' '}
+          <a href="/login" style={{ color: Tokens.colors.text.red }}>
+            Log in here
+          </a>
         </p>
       </div>
     </div>
