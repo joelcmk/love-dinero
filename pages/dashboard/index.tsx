@@ -14,10 +14,14 @@ function Dashboard({ session, router }) {
   const supabase = useSupabaseClient();
   const user = useUser();
 
+  console.log(user);
+
   const [todos, setTodos] = useState<Todos[]>([]);
   const [newCategory, setNewCategory] = useState('');
   const [newAmoutn, setNewAmount] = useState(null);
   const [errorText, setErrorText] = useState('');
+
+  const [demo, setDemo] = useState(!user);
 
   const [expensesList, setExpensesList] = useState(false);
 
@@ -65,6 +69,41 @@ function Dashboard({ session, router }) {
     }
   };
 
+  console.log(todos);
+
+  const demoData = [
+    {
+      id: 43,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+    {
+      id: 44,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+    {
+      id: 45,
+      user_id: 'demo',
+      category: 'utilities',
+      amount: 100,
+    },
+    {
+      id: 49,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+    {
+      id: 50,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+  ];
+
   return (
     <div
       style={{
@@ -82,9 +121,9 @@ function Dashboard({ session, router }) {
           }}
         >
           <div style={{ width: '400px' }}>
-            <Chart expenses={todos} />
+            <Chart expenses={demo ? demoData : todos} />
           </div>
-          <Budget expenses={todos} />
+          <Budget expenses={demo ? demoData : todos} />
           <NewExpense
             addExpense={addExpense}
             setNewCategory={newCategory}
@@ -93,7 +132,7 @@ function Dashboard({ session, router }) {
           />
         </div>
       ) : (
-        <Expenses todos={todos} onDelete={deleteExpense} />
+        <Expenses todos={demo ? demoData : todos} onDelete={deleteExpense} />
       )}
 
       <Footer />

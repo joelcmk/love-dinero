@@ -1,7 +1,9 @@
+import Nav from '../../Components/Nav/Nav';
+import Dashboard from '../dashboard';
 function Demo() {
   return (
     <>
-      <h1>Demo</h1>
+      <Dashboard />
     </>
   );
 }
