@@ -12,7 +12,7 @@ import { IoFastFoodOutline } from 'react-icons/io5';
 import { TbFridge } from 'react-icons/tb';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
-function Budget({ expenses }) {
+function Budget({ expenses, demo }) {
   const supabase = useSupabaseClient();
   const user = useUser();
 
@@ -29,24 +29,26 @@ function Budget({ expenses }) {
   const [targets, setTargets] = useState([]);
 
   useEffect(() => {
-    const fetchTarget = async () => {
-      const { data: target2, error } = await supabase
-        .from('target2')
-        .select('*')
-        .order('id', { ascending: true });
+    if (!demo) {
+      const fetchTarget = async () => {
+        const { data: target2, error } = await supabase
+          .from('target2')
+          .select('*')
+          .order('id', { ascending: true });
 
-      if (error) console.log('error', error);
-      else setTargets(target2);
-      setHome(target2[0].home);
-      setFood(target2[0].food);
-      setShopping(target2[0].shopping);
-      setTransportation(target2[0].transportation);
-      setUtilities(target2[0].utilities);
-      setHousehold(target2[0].household);
-      setOther(target2[0].other);
-    };
+        if (error) console.log('error', error);
+        else setTargets(target2);
+        setHome(target2[0].home);
+        setFood(target2[0].food);
+        setShopping(target2[0].shopping);
+        setTransportation(target2[0].transportation);
+        setUtilities(target2[0].utilities);
+        setHousehold(target2[0].household);
+        setOther(target2[0].other);
+      };
 
-    fetchTarget();
+      fetchTarget();
+    }
   }, [supabase]);
 
   const handleTarget = async () => {
@@ -253,7 +255,9 @@ function Budget({ expenses }) {
                 <Button
                   onClick={() => {
                     setTarget(!target);
-                    target && handleTarget();
+                    if (!demo) {
+                      target && handleTarget();
+                    }
                   }}
                   variant="update"
                 >

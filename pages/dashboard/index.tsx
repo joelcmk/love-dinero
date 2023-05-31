@@ -123,7 +123,7 @@ function Dashboard({ session, router }) {
           <div style={{ width: '400px' }}>
             <Chart expenses={demo ? demoData : todos} />
           </div>
-          <Budget expenses={demo ? demoData : todos} />
+          <Budget expenses={demo ? demoData : todos} demo={demo} />
           <NewExpense
             addExpense={addExpense}
             setNewCategory={newCategory}
