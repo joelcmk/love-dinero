@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import { Tokens } from '../../.mirrorful/theme';
 import { getDatabase, ref, set } from 'firebase/database';
 
-function NewExpense({ addExpense, setNewAmount, newAmount }) {
+function NewExpense({ addExpense, setNewAmount, newAmount, demo }) {
   const [category, setCategory] = useState('');
 
   const options = [

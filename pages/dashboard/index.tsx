@@ -25,6 +25,39 @@ function Dashboard({ session, router }) {
 
   const [expensesList, setExpensesList] = useState(false);
 
+  const [demoData, setDemoData] = useState([
+    {
+      id: 0,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+    {
+      id: 1,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+    {
+      id: 2,
+      user_id: 'demo',
+      category: 'utilities',
+      amount: 100,
+    },
+    {
+      id: 3,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+    {
+      id: 4,
+      user_id: 'demo',
+      category: 'food',
+      amount: 100,
+    },
+  ]);
+
   //console.log(expensesList);
 
   useEffect(() => {
@@ -42,21 +75,35 @@ function Dashboard({ session, router }) {
   }, [supabase]);
 
   const addExpense = async (newCategory: string) => {
-    let category = newCategory.trim();
-    let amount = newAmoutn;
-    if (category.length) {
-      const { data: todo, error } = await supabase
-        .from('todos')
-        .insert({ category, user_id: user.id, amount })
-        .select()
-        .single();
+    if (!demo) {
+      let category = newCategory.trim();
+      let amount = newAmoutn;
+      if (category.length) {
+        const { data: todo, error } = await supabase
+          .from('todos')
+          .insert({ category, user_id: user.id, amount })
+          .select()
+          .single();
 
-      if (error) {
-        setErrorText(error.message);
-      } else {
-        setTodos([...todos, todo]);
-        setNewCategory('');
+        if (error) {
+          setErrorText(error.message);
+        } else {
+          setTodos([...todos, todo]);
+          setNewCategory('');
+        }
       }
+    } else {
+      console.log(newCategory);
+      const nextDemoData = [
+        ...demoData,
+        {
+          id: demoData.length,
+          user_id: 'demo',
+          category: newCategory,
+          amount: Number(newAmoutn),
+        },
+      ];
+      setDemoData(nextDemoData);
     }
   };
 
@@ -71,38 +118,7 @@ function Dashboard({ session, router }) {
 
   console.log(todos);
 
-  const demoData = [
-    {
-      id: 43,
-      user_id: 'demo',
-      category: 'food',
-      amount: 100,
-    },
-    {
-      id: 44,
-      user_id: 'demo',
-      category: 'food',
-      amount: 100,
-    },
-    {
-      id: 45,
-      user_id: 'demo',
-      category: 'utilities',
-      amount: 100,
-    },
-    {
-      id: 49,
-      user_id: 'demo',
-      category: 'food',
-      amount: 100,
-    },
-    {
-      id: 50,
-      user_id: 'demo',
-      category: 'food',
-      amount: 100,
-    },
-  ];
+  console.log(demoData);
 
   return (
     <div
@@ -125,6 +141,7 @@ function Dashboard({ session, router }) {
           </div>
           <Budget expenses={demo ? demoData : todos} demo={demo} />
           <NewExpense
+            demo={demo}
             addExpense={addExpense}
             setNewCategory={newCategory}
             setNewAmount={setNewAmount}
