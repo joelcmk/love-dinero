@@ -124,7 +124,7 @@ function Expenses({
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      onDelete(expense.id);
+                      onDelete(expense.id, index);
                     }}
                     style={{ padding: '0 1em' }}
                   >

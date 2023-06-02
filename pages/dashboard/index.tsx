@@ -107,12 +107,19 @@ function Dashboard({ session, router }) {
     }
   };
 
-  const deleteExpense = async (id: number) => {
-    try {
-      await supabase.from('todos').delete().eq('id', id).throwOnError();
-      setTodos(todos.filter((x) => x.id != id));
-    } catch (error) {
-      console.log('error', error);
+  const deleteExpense = async (id: number, index) => {
+    if (!demo) {
+      try {
+        await supabase.from('todos').delete().eq('id', id).throwOnError();
+        setTodos(todos.filter((x) => x.id != id));
+      } catch (error) {
+        console.log('error', error);
+      }
+    } else {
+      const nextDemoData = [...demoData];
+      nextDemoData.splice(index, 1);
+      console.log(nextDemoData);
+      setDemoData(nextDemoData);
     }
   };
 
