@@ -4,14 +4,13 @@ function Footer() {
     <div
       style={{
         backgroundColor: 'var(--footer_background_color)',
-        marginTop: '40px',
         width: '100%',
-        height: '100px',
-        position: 'fixed',
-        bottom: '0',
-        left: '0',
+        height: '50px',
+        top: 'calc(100vh - 50px)',
         display: 'flex',
-        padding: '20px',
+        position: 'absolute',
+        alignItems: 'center',
+        paddingLeft: '1em',
       }}
     >
       <DarkModeToggle />
