@@ -130,16 +130,22 @@ function Dashboard({ session, router }) {
   return (
     <div
       style={{
-        height: '100vh',
         backgroundColor: 'var(--dasboard_background_color)',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
       }}
     >
-      <Nav setExpensesList={setExpensesList} />
+      <div>
+        <Nav setExpensesList={setExpensesList} />
+      </div>
       {!expensesList ? (
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-evenly',
+
             alignItems: 'center',
           }}
         >
@@ -159,7 +165,9 @@ function Dashboard({ session, router }) {
         <Expenses todos={demo ? demoData : todos} onDelete={deleteExpense} />
       )}
 
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

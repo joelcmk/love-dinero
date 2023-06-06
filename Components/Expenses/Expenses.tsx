@@ -67,7 +67,7 @@ function Expenses({
     <div
       style={{
         width: '100%',
-        height: 'calc(100% - 100px)',
+
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
