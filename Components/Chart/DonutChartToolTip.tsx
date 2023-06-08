@@ -23,12 +23,15 @@ function DonutChartTooltip({ data, mousePosition, total }) {
         marginTop: mousePosition.y + 20,
         padding: '0.5em',
         borderRadius: '10px',
+        boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
+        textAlign: 'center',
       }}
     >
-      <p>{toCapital(data.name)}</p>
-      <p>
-        ${data.count} / {Math.round((data.count * 100) / total)}%
+      <p style={{ fontWeight: 'bolder', marginBottom: '.5em' }}>
+        {toCapital(data.name)}
       </p>
+      <p>${data.count}</p>
+      <p>{Math.round((data.count * 100) / total)}%</p>
     </div>
   );
 }
