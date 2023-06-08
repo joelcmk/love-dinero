@@ -138,14 +138,13 @@ function Dashboard({ session, router }) {
       }}
     >
       <div>
-        <Nav setExpensesList={setExpensesList} />
+        <Nav setExpensesList={setExpensesList} demo={demo} />
       </div>
       {!expensesList ? (
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-evenly',
-
             alignItems: 'center',
           }}
         >

@@ -51,8 +51,9 @@
 }
 
 .profile:hover .subMenu {
-  margin-top: 145px;
+  margin-top: 150px;
   height: 100px;
-  width: 100%;
+  width: 210px;
+  position: absolute;
   background-color: var(--nav_profile_background_color);
 }

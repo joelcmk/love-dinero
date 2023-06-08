@@ -2,11 +2,13 @@ import { useState } from 'react';
 import styles from './Nav.module.css';
 import Image from 'next/image';
 import Button from '../Button/Button';
+import { useRouter } from 'next/router';
 
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
-function Nav({ setExpensesList }) {
+function Nav({ setExpensesList, demo }) {
   const supabase = useSupabaseClient();
+  const router = useRouter();
 
   return (
     <div style={{ display: 'flex' }}>
@@ -26,12 +28,6 @@ function Nav({ setExpensesList }) {
           <p style={{ cursor: 'pointer' }}>Account</p>
           <div className={styles.subMenu}>
             <Button
-              style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
-              onClick={() => supabase.auth.signOut()}
-            >
-              Sign Out
-            </Button>
-            <Button
               style={{
                 width: '180px',
                 margin: '0 auto',
@@ -41,6 +37,15 @@ function Nav({ setExpensesList }) {
               onClick={() => setExpensesList(true)}
             >
               Expenses
+            </Button>
+            <Button
+              style={{ width: '180px', margin: '0 auto', marginTop: '5px' }}
+              onClick={() =>
+                demo ? router.push('/signup') : supabase.auth.signOut()
+              }
+              variant={demo ? 'update' : 'delete'}
+            >
+              {demo ? 'Sign Up' : 'Sign Out'}
             </Button>
           </div>
         </div>
